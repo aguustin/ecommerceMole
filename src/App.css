@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -26,6 +27,41 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.navbar {
+  background-color: white;
+  height: 80px;
+}
+
+.nav-img {
+  height: 50px;
+  margin-left: 17px;
+}
+
+.nav-Buttons {
+  background: none;
+  border: none;
+  border-radius: 15px;
+  outline: none;
+  font-size: 18px;
+  font-weight: 600;
+  height: 40px;
+  width: 100px;
+}
+
+.nav-Buttons:hover {
+ background-color: rgb(231, 230, 230);
+ transition: all 0.7s;
+}
+
+.B-login {
+  border-radius: 15px;
+  border-color: red;
+  background: none;
+  outline: none;
+  margin-right: 25px;
+  font-weight: 600;
 }
 
 @keyframes App-logo-spin {
