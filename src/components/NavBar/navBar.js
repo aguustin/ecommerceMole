@@ -1,6 +1,7 @@
-import '../App.css';
+import '../../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Elogo from '../ecommerceLogo.png';
+import Elogo from '../../ecommerceLogo.png';
+import CartWidget from '../cartWidget/cartWidget';
 
 const navBar = () => {
     return (
@@ -12,6 +13,7 @@ const navBar = () => {
             <button className="nav-Buttons">Watches</button>
             </div>
             <button className="B-login">Login</button>
+            <CartWidget />
         </nav>
 
     );
