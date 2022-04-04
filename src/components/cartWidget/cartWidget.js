@@ -5,15 +5,13 @@ import '../../App.css';
 
 
 const cartWidget = () => {
-
+    
     return (
-        
             <div className='cart'>
-                <FontAwesomeIcon icon={faCartShopping} className="iconList"/><p>4</p>
+                <FontAwesomeIcon icon={faCartShopping} className="iconList"/><p>25</p>
             </div>
        
     )
-    
 }
 
 export default cartWidget;
