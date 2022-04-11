@@ -2,15 +2,23 @@
 import './App.css';
 import NavBar from './components/NavBar/navBar';
 import ItemListContainer from './components/itemListContainer/itemListContainer';
+import ItemDetailContainer from './components/itemDetailContainer/itemDetailContainer';
 import ItemCount from './components/itemCount/itemCount';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
+
+//<ItemDetailContainer />
+
 function App() {
+
+ 
   return (
     <div className="App">
       <NavBar />
       <ItemCount />
       <ItemListContainer greeting={'Hola coders'}/>
+      <ItemDetailContainer />
     </div>
   );
 }

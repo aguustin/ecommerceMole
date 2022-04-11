@@ -1,9 +1,8 @@
 //tiene que mandar a itemList la maqueta para mostrar los productos
 
+//import Item from "../item/item";
 
-const item = ({img, name, price}) => { //manda el maquetado con variables que contiene el objeto 'products'
-
-
+const itemDetail = ({name, img, price}) => { //recibe los productos mandados por itemListContainer
     return (
         <div className="item-prod col-lg-3 col-md-6 col-sm-12 card mx-auto">
             <h5 className="card-header">{name}</h5>
@@ -17,6 +16,15 @@ const item = ({img, name, price}) => { //manda el maquetado con variables que co
             </div>
         </div>
     )
+    /*return (
+        <ul>
+           {products.map(prod => <Item key={prod.id} {...prod} />)}  
+        </ul>
+    )*/
+
+    //recibe el objeto de 'products' de item, lo mapea y agrega una key
+    //mapear el objeto sirve para poder mostrarlo y mostrar los datos que contienen los elementos
+
 }
 
-export default item;
+export default itemDetail;

@@ -1,6 +1,6 @@
 const products = [
     {
-        id: 1,
+        id: '1',
         name: 'First Product',
         price: 2000,
         category: 'b',
@@ -9,7 +9,7 @@ const products = [
         description: 'c'
     },
     {
-        id: 2,
+        id: '2',
         name: 'Second Product',
         price: 3000,
         category: 'f',
@@ -18,7 +18,7 @@ const products = [
         description: 'f'
     },
     {
-        id: 3,
+        id: '3',
         name: 'Third Product',
         price: 4000,
         category: 'e',
@@ -27,7 +27,7 @@ const products = [
         description: 'e'
     },
     {
-        id: 4,
+        id: '4',
         name: 'Fourt Product',
         price: 3000,
         category: 'f',
@@ -41,6 +41,16 @@ export const getProducts = () => { //manda el objeto de products a itemListConta
     return new Promise(resolve => {
         setTimeout(() => {
             resolve(products)
-        },100)
+        },2000)
+    })
+}
+
+
+export const getProductsById = (id) => { //manda el objeto de products a itemListContainer
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve(products.find(prod => prod.id === id))
+        },2000)
+        console.log(id)
     })
 }
