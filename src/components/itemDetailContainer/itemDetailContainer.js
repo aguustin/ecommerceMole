@@ -1,17 +1,18 @@
 import { useState, useEffect } from "react";
 import ItemDetail from "../itemDetail/itemDetail";
-import { getProductsById } from "../../asyncmock";
-
+import { getProductsById} from "../../asyncmock";
+import { useParams } from "react-router-dom";
 
 
 const ItemDetailContainer = (props) => {
 
     const [product, setProducts] = useState([]);
 
+    const {Id} = useParams();
+
     useEffect(() => {
-        getProductsById('1').then(item => {
+        getProductsById(Id).then(item => {
             setProducts(item); //setea los productos tomados de getProducts de asyncmock dentro de products de 
-            console.log(item);
         }).catch(error => {
             console.log(error)
         })
@@ -23,9 +24,8 @@ const ItemDetailContainer = (props) => {
 
     return(
     <div className="itemDetailContainer">
-        <h1>Item detail container (clase 6)</h1>
+        <h1>Item detail</h1>
             <ItemDetail {...product} /> 
-        
     </div>
     )
 }

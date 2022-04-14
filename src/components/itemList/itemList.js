@@ -4,8 +4,9 @@ import Item from "../item/item";
 const itemList = ({products}) => { //recibe los productos mandados por itemListContainer
 
     return (
-        <ul>
-           {products.map(prod => <Item key={prod.id} {...prod} />)}  
+        
+        <ul style={{display:'block'}}>
+           {products.map(prod => <Item key={prod.id} {...prod} />)} 
         </ul>
     )
 

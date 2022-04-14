@@ -1,6 +1,7 @@
 //import logo from './logo.svg';
 import './App.css';
-import NavBar from './components/NavBar/navBar';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import NavBar from './components/NavBar/NavBar';
 import ItemListContainer from './components/itemListContainer/itemListContainer';
 import ItemDetailContainer from './components/itemDetailContainer/itemDetailContainer';
 import ItemCount from './components/itemCount/itemCount';
@@ -15,10 +16,15 @@ function App() {
  
   return (
     <div className="App">
+      <BrowserRouter>
       <NavBar />
       <ItemCount />
-      <ItemListContainer greeting={'Hola coders'}/>
-      <ItemDetailContainer />
+      <Routes>
+      <Route path="/" element={<ItemListContainer/>}/>
+      <Route path='/category/:categoryId' element={<ItemListContainer />}/>
+      <Route path='/item/:Id' element={<ItemDetailContainer />}/>
+      </Routes>
+      </BrowserRouter>
     </div>
   );
 }

@@ -1,11 +1,12 @@
 //tiene que mandar a itemList la maqueta para mostrar los productos
+import {Link} from 'react-router-dom'
 
-
-const item = ({img, name, price}) => { //manda el maquetado con variables que contiene el objeto 'products'
+const item = ({id, img, name, price}) => { //manda el maquetado con variables que contiene el objeto 'products'
 
 
     return (
-        <div className="item-prod col-lg-3 col-md-6 col-sm-12 card mx-auto">
+        
+        <div className="item-prod col-lg-3 col-md-6 col-sm-12 card mx-auto" style={{margin:'5px', display:'inline-flex'}}>
             <h5 className="card-header">{name}</h5>
             <picture className="card-body">
                 <img src={img} alt="" />
@@ -14,6 +15,7 @@ const item = ({img, name, price}) => { //manda el maquetado con variables que co
             <p>Price: {price}</p>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                <Link to={`/item/${id}`}>See details</Link>
             </div>
         </div>
     )

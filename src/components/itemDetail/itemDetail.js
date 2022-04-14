@@ -16,11 +16,6 @@ const itemDetail = ({name, img, price}) => { //recibe los productos mandados por
             </div>
         </div>
     )
-    /*return (
-        <ul>
-           {products.map(prod => <Item key={prod.id} {...prod} />)}  
-        </ul>
-    )*/
 
     //recibe el objeto de 'products' de item, lo mapea y agrega una key
     //mapear el objeto sirve para poder mostrarlo y mostrar los datos que contienen los elementos

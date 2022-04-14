@@ -2,15 +2,24 @@ import '../../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Elogo from '../../ecommerceLogo.png';
 import CartWidget from '../cartWidget/cartWidget';
+import { getCategories } from '../../asyncmock';
+import { Link, NavLink } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
-const navBar = () => {
+const NavBar = () => {
+
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {getCategories().then(categories => {
+        setCategories(categories)
+    })
+},[])
+
     return (
         <nav className="navbar col-md-14 col-lg-14 col-sm-14">
-            <img src={Elogo} className="nav-img" alt=""></img>
+            <Link to='/'><img src={Elogo} className="nav-img" alt=""></img></Link>
             <div className="mx-auto">
-            <button className="nav-Buttons">Computers</button>
-            <button className="nav-Buttons">Phones</button>
-            <button className="nav-Buttons">Watches</button>
+            {categories.map(cat => <NavLink key={cat.id} to={`/category/${cat.id}`}>{cat.description}</NavLink>)}
             </div>
             <button className="B-login">Login</button>
             <CartWidget />
@@ -19,4 +28,4 @@ const navBar = () => {
     );
 }
 
-export default navBar;
+export default NavBar;
