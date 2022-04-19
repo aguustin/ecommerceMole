@@ -3,42 +3,40 @@ import '../../App.css';
 import { useState } from 'react';
 
 
-const Count = ({initial, onAdd}) => {
+const Count = ({initial, stock, onAdd}) => {
 
-    const [sum, setSum] = useState(0);
-    const [oncar, setOnCar] = useState(0);
-    initial = 0;
-    onAdd = 0;
-    const [stock, setStock] = useState(20);
+    const [count, setCount] = useState(0);
+    //const [oncar, setOnCar] = useState(0);
+    //const [stock, setStock] = useState();
 
-const increment = (sumar) => {
+const increment = () => {
 
-     setSum(sum + 1);
+     setCount(count + 1);
 
-     if(sum >= stock){
+    /* if(sum >= stock){
 
         setSum(stock);
 
      }
     
-     return sumar;
+     return sumar;*/
 }
 
-const decrement = (restar) => {
+const decrement = () => {
     
-    setSum(sum - 1);
+    setCount(count - 1);
      
-    if(sum === initial){
+    /*if(sum === initial){
     
         setSum(0);
      
     }
 
-    return restar;
+    return restar;*/
 }
 
 
-const onAddd = () =>{
+/*const onAddd = () =>{
    
    setStock(stock - sum);
    setOnCar(oncar + sum);
@@ -48,20 +46,20 @@ const onAddd = () =>{
       setStock(0);
    }
 
-}
+}*/
 
 return (
     <div className='itemCount col-lg-2'>
         <p style={{color:'black'}}>{stock}</p>
         <div className='itemCountChild mx-auto'>
                 <button onClick={decrement}>-</button>
-                <p>{sum}</p>
+                <p>{count}</p>
                 <button onClick={increment}>+</button>
         </div>
-        <button id="sumCart" onClick={onAddd}>Add to cart</button>
+        <button onClick={() => onAdd(count)}>Add to cart</button> 
     </div>
 )
-
+//id="sumCart"  *va en el ultimo button
 }
 
 export default Count;

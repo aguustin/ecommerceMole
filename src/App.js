@@ -4,7 +4,8 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 import ItemListContainer from './components/itemListContainer/itemListContainer';
 import ItemDetailContainer from './components/itemDetailContainer/itemDetailContainer';
-import ItemCount from './components/itemCount/itemCount';
+//import ItemCount from './components/itemCount/itemCount';
+//import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -13,12 +14,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
+  /*const handleOnAdd = (quantity) => {
+    console.log(`Se agregaron ${quantity} productos`)
+  }*/
+
+  //const [show, setShow] = useState(true);
  
   return (
     <div className="App">
       <BrowserRouter>
       <NavBar />
-      <ItemCount />
       <Routes>
       <Route path="/" element={<ItemListContainer/>}/>
       <Route path='/category/:categoryId' element={<ItemListContainer />}/>
@@ -28,6 +33,9 @@ function App() {
     </div>
   );
 }
+
+/*<button onClick={() => setShow(!show)}>{show ? 'Desmontar contador' : 'Montar contador'}</button>
+{ show ? <ItemCount initial={0} stock={20} onAdd={handleOnAdd} /> : null} para montar y desmontar el contador*/ 
 
 export default App;
 /*  <header className="App-header mx-auto col-lg-3 col-md-5 col-sm-6">
