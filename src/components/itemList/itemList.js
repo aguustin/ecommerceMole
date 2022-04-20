@@ -1,7 +1,7 @@
 //tiene que mapear el array traido de asyncmock en la maqueta traida por item.js
 import Item from "../item/item";
 
-const itemList = ({products}) => { //recibe los productos mandados por itemListContainer
+const ItemList = ({products}) => { //recibe los productos mandados por itemListContainer
 
     return (
         
@@ -15,4 +15,4 @@ const itemList = ({products}) => { //recibe los productos mandados por itemListC
 
 }
 
-export default itemList;
+export default ItemList;

@@ -19,7 +19,7 @@ const NavBar = () => {
         <nav className="navbar col-md-14 col-lg-14 col-sm-14">
             <Link to='/'><img src={Elogo} className="nav-img" alt=""></img></Link>
             <div className="mx-auto">
-            {categories.map(cat => <NavLink key={cat.id} to={`/category/${cat.id}`}>{cat.description}</NavLink>)}
+            {categories.map(cat => <NavLink className="categories" key={cat.id} to={`/category/${cat.id}`}>{cat.description}</NavLink>)}
             </div>
             <button className="B-login">Login</button>
             <CartWidget />

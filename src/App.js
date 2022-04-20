@@ -1,6 +1,7 @@
 //import logo from './logo.svg';
 import './App.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import { CartContextProvider } from './components/cartContext/cartContext';
 import NavBar from './components/NavBar/NavBar';
 import ItemListContainer from './components/itemListContainer/itemListContainer';
 import ItemDetailContainer from './components/itemDetailContainer/itemDetailContainer';
@@ -8,20 +9,17 @@ import ItemDetailContainer from './components/itemDetailContainer/itemDetailCont
 //import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
-
-//<ItemDetailContainer />
-
 function App() {
-
   /*const handleOnAdd = (quantity) => {
     console.log(`Se agregaron ${quantity} productos`)
   }*/
-
   //const [show, setShow] = useState(true);
+ // const [cart, setCart] = useState([]);
  
   return (
     <div className="App">
+{/*<Context.Provider value={{cart, setCart}}>*/}
+      <CartContextProvider>
       <BrowserRouter>
       <NavBar />
       <Routes>
@@ -30,6 +28,8 @@ function App() {
       <Route path='/item/:Id' element={<ItemDetailContainer />}/>
       </Routes>
       </BrowserRouter>
+      {/*</Context.Provider>*/}
+      </CartContextProvider>
     </div>
   );
 }

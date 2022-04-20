@@ -16,11 +16,10 @@ const ItemDetailContainer = (props) => {
         }).catch(error => {
             console.log(error)
         })
-
         return(() => {
             setProducts()
         })
-    }, [])
+    }, [Id])
 
     return(
     <div className="itemDetailContainer">
