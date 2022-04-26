@@ -1,4 +1,7 @@
-
+*{
+  text-decoration: none;
+  list-style: none;
+}
 .App {
   text-align: center;
 }
@@ -78,6 +81,7 @@
   display: flex;
   background-color: rgb(218, 240, 247);
   height: 55px;
+  text-decoration: none;
 }
 
 .cart:hover{
@@ -87,6 +91,31 @@
 .cart, p{
   font-weight: 600;
   color: white;
+}
+
+
+.onCart ul li{
+  font-weight: 600;;
+  width: auto;
+  display: block;
+  margin-top: 1px;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.onCart img{
+  width: 60%;
+  margin-right: 3.9px;
+}
+
+.onCart button{
+
+  color:black;
+  font-weight: 600;
+  width: auto;
+  border: none;
+  outline: none;
+  float: left;
 }
 
 .iconList{
@@ -157,6 +186,16 @@
   margin-left: 5px;
   background-color: rgb(196, 237, 250);
   
+}
+
+.irAlCarrito{
+  background-color: rgb(245, 43, 43);
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 5px;
+  border-radius: 7px;
+  margin-left:100px;
 }
 
 .itemCountChild p{

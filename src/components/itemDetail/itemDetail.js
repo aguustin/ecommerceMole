@@ -2,7 +2,7 @@
 import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import CartContext from '../cartContext/cartContext';
-
+import NotificationContext from '../notifications/notifications';
 
 const InputCount = ({onConfirm, stock, initial=1}) => {
 
@@ -62,16 +62,18 @@ const ItemDetail = ({id, name, img, category, description, price, stock}) => { /
     const [typeInput, setInputType] = useState(true);
     const [quantity, setQuanqity] = useState(0);
 
-    const { addItem, isInCart } = useContext(CartContext)
+    const { addItem, isInCart } = useContext(CartContext);
+    const { setNotification } = useContext(NotificationContext);
 
     const handleAdd = (count) => {
         setQuanqity(count)
 
         const productObj = {
-            id, name, price, quantity
+            id, name, price, quantity, img
         }
 
         addItem({...productObj, quantity: count})
+        setNotification('success', `Se agregaron ${count} ${name} correctamente`)
     }
 
     const Count = typeInput ? ButtonCount : InputCount
@@ -83,11 +85,11 @@ const ItemDetail = ({id, name, img, category, description, price, stock}) => { /
                 <img src={img} alt="" />
             </picture>
             <div className="item-prod-footer card-footer">
-            <div style={{display:'flex'}}><p>category: {category}</p><p>Price: {price}</p></div>
+            <div style={{display:'flex'}}><p>category: {category}</p><p style={{marginLeft:'110px'}}>Price: {price}</p></div>
             <p>{description}</p>
             <div style={{display:'flex'}}>
             <button id="changeAcount" onClick={() => setInputType(!typeInput)}>Change Count</button>
-            { isInCart(id) ? <Link to='/cart'>Ir al carrito</Link> : <Count onConfirm={handleAdd} stock={stock}></Count>}
+            { isInCart(id) ? <Link to='/cart' className='irAlCarrito'>Ir al carrito</Link> : <Count onConfirm={handleAdd} stock={stock}></Count>}
             </div>
             </div>
         </div>

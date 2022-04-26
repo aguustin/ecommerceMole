@@ -4,16 +4,18 @@ import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { useContext } from 'react';
 import  CartContext  from '../cartContext/cartContext';
 import '../../App.css';
+import { Link } from 'react-router-dom';
 
 const CartWidget = () => {
 
     const {getQuantity} = useContext(CartContext)
-    
+
     return (
+        <Link  to='/cart'>
             <div className='cart'>
                 <FontAwesomeIcon icon={faCartShopping} className="iconList"/><p>{getQuantity()}</p>
             </div>
-       
+       </Link>
     )
 }
 
