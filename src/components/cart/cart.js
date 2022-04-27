@@ -16,7 +16,7 @@ const Cart = () => {
     }
 
     return(
-        <div className="onCart col-lg-4 col-md-4 col-sm-12 mx-auto">
+        <div className="onCart col-lg-4 col-md-4 col-sm-6 mx-auto">
             <h1>On Cart</h1>
             <ul>
                 {

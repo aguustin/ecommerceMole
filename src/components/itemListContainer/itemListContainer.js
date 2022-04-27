@@ -11,6 +11,8 @@ const ItemListContainer = (props) => {
     const [products, setProducts] = useState([]);
     
     const {categoryId} = useParams([]);
+
+    console.log(categoryId);
     
     const collectionRef = categoryId
     ? query(collection(firestoreDb, 'products'), where('category', '==', categoryId))
@@ -23,10 +25,10 @@ const ItemListContainer = (props) => {
             console.log(error)
         })*/
 
-        getDocs(collectionRef).then(response =>{
+        getDocs(collectionRef).then(response => {
             console.log(response)
             const products = response.docs.map(doc => {
-                return {id:doc.id, ...doc.data()}
+                return {id: doc.id, ...doc.data()}
             }) 
             setProducts(products);
         })

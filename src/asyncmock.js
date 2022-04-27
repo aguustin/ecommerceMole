@@ -73,7 +73,7 @@ const products = [
     }
 ];
 
-const categories = [
+/*const categories = [
     {id:'computer', description:'Computer'},
     {id:'phone', description:'Phone'}
     //{id:'watch', description:'Watch'}
@@ -100,4 +100,4 @@ export const getProductsById = (id) => { //manda el objeto de products a itemLis
         },2000)
         console.log(id)
     })
-}
+}*/
