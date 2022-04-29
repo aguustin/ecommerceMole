@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import CartContext from '../cartContext/cartContext';
 import NotificationContext from '../notifications/notifications';
 
+
 const InputCount = ({onConfirm, stock, initial=1}) => {
 
     const [count, setCount] = useState(initial);
@@ -61,13 +62,13 @@ return (
 const ItemDetail = ({id, name, img, category, description, price, stock}) => { //recibe los productos mandados por itemListContainer
     const [typeInput, setInputType] = useState(true);
     const [quantity, setQuanqity] = useState(0);
-
-    const { addItem, isInCart } = useContext(CartContext);
+    const [ toCart, setToCart ] = useState(0);
+    const { addItem /*isInCart*/ } = useContext(CartContext);
     const { setNotification } = useContext(NotificationContext);
 
     const handleAdd = (count) => {
         setQuanqity(count)
-
+        setToCart(count)
         const productObj = {
             id, name, price, quantity, img
         }
@@ -89,7 +90,7 @@ const ItemDetail = ({id, name, img, category, description, price, stock}) => { /
             <p>{description}</p>
             <div style={{display:'flex'}}>
             <button id="changeAcount" onClick={() => setInputType(!typeInput)}>Change Count</button>
-            { isInCart(id) ? <Link to='/cart' className='irAlCarrito'>Ir al carrito</Link> : <Count onConfirm={handleAdd} stock={stock}></Count>}
+            { toCart > 0 ? <Link to='/cart' className='irAlCarrito'>Ir al carrito</Link> : <Count onConfirm={handleAdd} stock={stock}></Count>}
             </div>
             </div>
         </div>
