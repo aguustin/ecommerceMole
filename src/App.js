@@ -7,6 +7,8 @@ import NavBar from './components/NavBar/NavBar';
 import { NotificationProvider } from './components/notifications/notifications';
 import ItemListContainer from './components/itemListContainer/itemListContainer';
 import ItemDetailContainer from './components/itemDetailContainer/itemDetailContainer';
+import SignIn from './components/signIn/signIn';
+
 //import ItemCount from './components/itemCount/itemCount';
 //import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -31,6 +33,7 @@ function App() {
       <Route path='/category/:categoryId' element={<ItemListContainer />}/>
       <Route path='/item/:Id' element={<ItemDetailContainer />}/>
       <Route path='/cart' element={<Cart/>}/>
+      <Route path='/signIn' element={<SignIn/>}/>
       </Routes>
       </BrowserRouter>
       {/*</Context.Provider>*/}

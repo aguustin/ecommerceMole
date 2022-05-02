@@ -60,20 +60,23 @@ return (
 }
 
 const ItemDetail = ({id, name, img, category, description, price, stock}) => { //recibe los productos mandados por itemListContainer
-    const [typeInput, setInputType] = useState(true);
-    const [quantity, setQuanqity] = useState(0);
+    const [ typeInput, setInputType ] = useState(true);
+    const [ quantity, setQuanqity ] = useState(0);
     const [ toCart, setToCart ] = useState(0);
-    const { addItem /*isInCart*/ } = useContext(CartContext);
+   // const [ total, /*setTotal*/ ] = useState(0); //hecho ultimo
+    const { addItem, getTotal /*getTotal isInCart*/ } = useContext(CartContext);
     const { setNotification } = useContext(NotificationContext);
 
     const handleAdd = (count) => {
         setQuanqity(count)
         setToCart(count)
+        const total = getTotal()
+        console.log(total)
         const productObj = {
-            id, name, price, quantity, img
+            id, name, price, quantity, img, total
         }
 
-        addItem({...productObj, quantity: count})
+    addItem({...productObj, quantity: count, total /*hecho ultimo*/})
         setNotification('success', `Se agregaron ${count} ${name} correctamente`)
     }
 
