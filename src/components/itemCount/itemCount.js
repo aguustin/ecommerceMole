@@ -32,7 +32,7 @@ return (
         <button onClick={() => onAdd(count)}>Add to cart</button> 
     </div>
 )
-//id="sumCart"  *va en el ultimo button
+
 }
 
 export default Count;

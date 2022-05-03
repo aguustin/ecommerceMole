@@ -12,7 +12,6 @@ const Notification = ({ message, severity, otherClass = 'Message'}) => {
       padding: '10px',
       borderRadius: '7px',
       fontWeight: '600',
-      //backgroundColor:severity === 'success' ? ' rgb(159, 233, 255)' : 'red',
       color:'black'
   }
 

@@ -12,6 +12,7 @@ const InputCount = ({onConfirm, stock, initial=1}) => {
     const handleChange = (e) => {
         if(e.target.value <= stock){
             setCount(e.target.value);
+            console.log(e.target.value)
         }
     }
 
@@ -23,7 +24,7 @@ const InputCount = ({onConfirm, stock, initial=1}) => {
     )
 }
 
-const ButtonCount = ({onConfirm, stock, initial = 0}) => {
+const ButtonCount = ({onConfirm, stock, initial = 1}) => {
 
     const [count, setCount] = useState(initial);
 
@@ -40,8 +41,8 @@ const increment = () => {
 const decrement = () => {
     
     setCount(count - 1);
-    if(count <= 0){
-        setCount(0)
+    if(count <= 1){
+        setCount(1)
     }
      
 }
@@ -56,15 +57,13 @@ return (
         <button id="addCart" onClick={() => onConfirm(count)}>Add to cart</button> 
     </div>
 )
-//id="sumCart"  *va en el ultimo button
 }
 
-const ItemDetail = ({id, name, img, category, description, price, stock}) => { //recibe los productos mandados por itemListContainer
+const ItemDetail = ({id, name, img, category, description, price, stock}) => { 
     const [ typeInput, setInputType ] = useState(true);
     const [ quantity, setQuanqity ] = useState(0);
     const [ toCart, setToCart ] = useState(0);
-   // const [ total, /*setTotal*/ ] = useState(0); //hecho ultimo
-    const { addItem, getTotal /*getTotal isInCart*/ } = useContext(CartContext);
+    const { addItem, getTotal } = useContext(CartContext);
     const { setNotification } = useContext(NotificationContext);
 
     const handleAdd = (count) => {
@@ -76,7 +75,7 @@ const ItemDetail = ({id, name, img, category, description, price, stock}) => { /
             id, name, price, quantity, img, total
         }
 
-    addItem({...productObj, quantity: count, total /*hecho ultimo*/})
+    addItem({...productObj, quantity: count, total})
         setNotification('success', `Se agregaron ${count} ${name} correctamente`)
     }
 
@@ -98,9 +97,6 @@ const ItemDetail = ({id, name, img, category, description, price, stock}) => { /
             </div>
         </div>
     )
-
-    //recibe el objeto de 'products' de item, lo mapea y agrega una key
-    //mapear el objeto sirve para poder mostrarlo y mostrar los datos que contienen los elementos
 
 }
 

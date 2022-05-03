@@ -34,5 +34,5 @@ const ItemDetailContainer = (props) => {
     </div>
     )
 }
-//en <ItemList /> itemListContainer manda los productos
+
 export default ItemDetailContainer;

@@ -36,7 +36,7 @@ const ItemListContainer = (props) => {
 
         if(products.length === 0){
             return(
-                <h1>We dont have products yet</h1>
+                <h1>Loading...</h1>
             )
         }
             return(
