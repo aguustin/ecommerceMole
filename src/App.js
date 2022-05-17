@@ -1,4 +1,4 @@
-//import logo from './logo.svg';
+
 import './App.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import { CartContextProvider } from './components/cartContext/cartContext';
@@ -8,22 +8,15 @@ import { NotificationProvider } from './components/notifications/notifications';
 import ItemListContainer from './components/itemListContainer/itemListContainer';
 import ItemDetailContainer from './components/itemDetailContainer/itemDetailContainer';
 import SignIn from './components/signIn/signIn';
-
-//import ItemCount from './components/itemCount/itemCount';
-//import { useState } from 'react';
+import SignUp from './components/signUp/signUp';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
-  /*const handleOnAdd = (quantity) => {
-    console.log(`Se agregaron ${quantity} productos`)
-  }*/
-  //const [show, setShow] = useState(true);
- // const [cart, setCart] = useState([]);
+
  
   return (
     <div className="App">
-{/*<Context.Provider value={{cart, setCart}}>*/}
       <NotificationProvider>
       <CartContextProvider>
       <BrowserRouter>
@@ -34,17 +27,14 @@ function App() {
       <Route path='/item/:Id' element={<ItemDetailContainer />}/>
       <Route path='/cart' element={<Cart/>}/>
       <Route path='/signIn' element={<SignIn/>}/>
+      <Route path='/signUp' element={<SignUp/>}/>
       </Routes>
       </BrowserRouter>
-      {/*</Context.Provider>*/}
       </CartContextProvider>
       </NotificationProvider>
     </div>
   );
 }
-
-/*<button onClick={() => setShow(!show)}>{show ? 'Desmontar contador' : 'Montar contador'}</button>
-{ show ? <ItemCount initial={0} stock={20} onAdd={handleOnAdd} /> : null} para montar y desmontar el contador*/ 
 
 export default App;
 

@@ -2,7 +2,6 @@ import '../../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Elogo from '../../ecommerceLogo.png';
 import CartWidget from '../cartWidget/cartWidget';
-//import { getCategories } from '../../asyncmock';
 import { Link, NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getDocs, collection } from 'firebase/firestore';
@@ -13,8 +12,6 @@ const NavBar = () => {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        /*getCategories().then(categories => {
-        setCategories(categories)*/
         getDocs(collection(firestoreDb, 'categories')).then(response => {
             const categories = response.docs.map(doc => {
                 return { id: doc.id, ...doc.data() }
@@ -30,6 +27,7 @@ const NavBar = () => {
             {categories.map(cat => <NavLink className="categories" key={cat.id} to={`/category/${cat.id}`}>{cat.description}</NavLink>)}
             </div>
             <Link to='/signIn'><button className="B-login">Sign In</button></Link>
+            <Link to='/signUp'><button className="B-login">Sign Up</button></Link>
             <CartWidget />
         </nav>
 

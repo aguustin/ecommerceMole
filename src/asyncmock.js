@@ -72,32 +72,3 @@ const products = [
         description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industrys standard dummy text ever since the 1500s'
     }
 ];
-
-/*const categories = [
-    {id:'computer', description:'Computer'},
-    {id:'phone', description:'Phone'}
-    //{id:'watch', description:'Watch'}
-]
-
-export const getCategories = () => {
-    return new Promise(resolve => {
-        resolve(categories)
-    })
-}
-
-export const getProducts = (categoryId) => { //manda el objeto de products a itemListContainer
-    return new Promise(resolve => {
-        setTimeout(() => {
-            resolve(categoryId ? products.filter(prod => prod.category === categoryId) : products)
-        },500)
-    })
-}
-
-export const getProductsById = (id) => { //manda el objeto de products a itemListContainer
-    return new Promise(resolve => {
-        setTimeout(() => {
-            resolve(products.find(prod => prod.id === id))
-        },2000)
-        console.log(id)
-    })
-}*/

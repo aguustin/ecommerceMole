@@ -5,7 +5,6 @@ import { writeBatch, addDoc, collection, getDocs, query, where, documentId } fro
 import { firestoreDb } from "../../services/firebase/index";
 
 const Cart = () => {
-/*<div>total: {cart.map(prod => {prod.total})}</div>*/
     const {cart, removeItem, clearCart, getTotal} = useContext(CartContext);
 
     const createOrder = () => {
@@ -45,9 +44,12 @@ const Cart = () => {
         }else{
             return Promise.reject({ name: 'outOfStockError', products: outOfStock})
         }
-    }).then(({ id }) => {
+    }).then(({ id}) => {
         batch.commit()
+        clearCart()
+        return(
         console.log(`Orden ${id}`)
+        )
     }).catch(error => {
         console.log(error)
     })
@@ -59,22 +61,17 @@ const Cart = () => {
         return(
             <div>
             <h1>There is no products in the cart</h1>
-            <Link to='/'>Volver a la lista</Link>
+            <Link to='/'><h3>Back to the list</h3></Link>
             </div>
         )
     }
 
-    /*const addDocToCollection = () => {
-        console.log('funcion a')
-    }*/
-
     return(
-        <div className="onCart col-lg-4 col-md-4 col-sm-6 mx-auto">
-            <h1>On Cart</h1>
+        <div className="onCart col-lg-12 col-md-12 col-sm-6 mx-auto">
             <ul>
                 {
                  cart.map(prod => <li key={prod.id}>
-                 <button onClick={() =>removeItem(prod.id)}>X</button><br></br> 
+                 <button id="removeItem" onClick={() =>removeItem(prod.id)}>X</button><br></br> 
                  <img src={prod.img} alt=""></img><br></br> 
                  Product name: {prod.name} <br></br> 
                  cantidad: {prod.quantity} <br></br> 
@@ -83,17 +80,18 @@ const Cart = () => {
                  </li>
                 )
                 }
-                <div>
+            </ul>
+            <div>
                     {
-                   <h2>
-                    total:{getTotal()} 
-                    </h2>
-                    
+                   <h3>
+                    Total:{getTotal()} 
+                    </h3>
                     }
                      </div>
-                <button onClick={() => clearCart()}>Clear cart</button>
-                <button onClick={() => createOrder()}>Crear Orden</button>
-            </ul>
+                <div className="mx-auto">
+                    <button id="clearCart" className="btn btn-danger" onClick={() => clearCart()}>Clear cart</button>
+                    <button id="createOrder" className="btn btn-primary" onClick={() => createOrder()}>Create Order</button>
+                </div>
         </div>
     )
 }
