@@ -1,7 +1,7 @@
 
 import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import CartContext from '../cartContext/cartContext';
+import CartContext from '../../Context/cartContext/cartContext';
 import NotificationContext from '../notifications/notifications';
 
 
@@ -70,7 +70,6 @@ const ItemDetail = ({id, name, img, category, description, price, stock}) => {
         setQuanqity(count)
         setToCart(count)
         const total = getTotal()
-        console.log(total)
         const productObj = {
             id, name, price, quantity, img, total
         }

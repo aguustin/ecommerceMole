@@ -1,7 +1,7 @@
 
 import './App.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import { CartContextProvider } from './components/cartContext/cartContext';
+import { CartContextProvider } from '../src/Context/cartContext/cartContext';
 import Cart from './components/cart/cart';
 import NavBar from './components/NavBar/NavBar';
 import { NotificationProvider } from './components/notifications/notifications';

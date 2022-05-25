@@ -1,24 +1,84 @@
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import CartContext from "../cartContext/cartContext";
+import CartContext from "../../Context/cartContext/cartContext";
 import { writeBatch, addDoc, collection, getDocs, query, where, documentId } from "firebase/firestore";
 import { firestoreDb } from "../../services/firebase/index";
 
-const Cart = () => {
+
+/* Cart : Falta formulario de contacto para que el usuario lo complete 
+y que no se creen todas las ordenes con los mismos datos. Con esto el proyecto esta incompleto., 
+es necesario para aprobar.*/
+
+
+const SignIn = () => {
+    const [user, setUser] = useState({
+        mail: '',
+        name: '',
+        pass: ''
+    });
+
+    const getIn = (event) => {
+
+        event.stopPropagation();
+        
+        setUser({...user, [event.target.name] : event.target.value})
+    
+        console.log(user)
+        
+    }
+    
+    const enviarDatos = (event) => {
+        event.preventDefault()
+        setUser({...user, [event.target.name] : event.target.value})
+    
+        console.log(user)
+    
+        if(user.mail.length < 12){
+            console.log("no se encontro usuario")
+        }else{
+            console.log("enviando" + user.mail + "y" + user.name )
+        }
+        return user
+    }
+    
+    return(
+        
+       <form onSubmit={enviarDatos}>
+         
+        <div className="formSignIn card mx-auto">
+            <div className="card-header"><h3>Sign in</h3></div>
+                <div className="card-body">
+                   
+                        <input placeholder="Email" type="email" onChange={getIn} name="mail"></input>
+                        <input placeholder="Name" type="text" onChange={getIn} name="names"></input>                         
+                        <input placeholder="Password" type="password" onChange={getIn} name="pass"></input>
+                   
+                </div>
+            <div className="card-footer"><button className="btn btn-danger" type="submit" style={{fontWeight:'600'}}>Get in</button></div>
+        </div>
+        </form>
+        
+    )
+    
+    }
+
+const Cart = (user) => {
+  
     const {cart, removeItem, clearCart, getTotal} = useContext(CartContext);
 
+
     const createOrder = () => {
+       
         const ObjectOrder = {
             items : cart,
             buyer : {
-                name: 'Agustin Mole',
-                phone: '213381291',
-                email: 'agustinmole@gmail.com'
+                email: user.mail,
+                username: user.name
             },
             total : getTotal(),
             date: new Date()
         }
-    
+
 
     const ids = cart.map(prod => prod.id)
     const batch = writeBatch(firestoreDb)
@@ -53,10 +113,10 @@ const Cart = () => {
     }).catch(error => {
         console.log(error)
     })
-
+    console.log(ObjectOrder)
     }
 
-
+   
     if(cart.length === 0){
         return(
             <div>
@@ -65,6 +125,7 @@ const Cart = () => {
             </div>
         )
     }
+
 
     return(
         <div className="onCart col-lg-12 col-md-12 col-sm-6 mx-auto">
@@ -91,6 +152,7 @@ const Cart = () => {
                 <div className="mx-auto">
                     <button id="clearCart" className="btn btn-danger" onClick={() => clearCart()}>Clear cart</button>
                     <button id="createOrder" className="btn btn-primary" onClick={() => createOrder()}>Create Order</button>
+                    <SignIn></SignIn>
                 </div>
         </div>
     )

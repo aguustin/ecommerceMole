@@ -17,8 +17,12 @@ const NavBar = () => {
                 return { id: doc.id, ...doc.data() }
         })
         setCategories(categories)
-    })
+    
+    }).catch((err) => {
+        console.log(err)   
+     });
 },[])
+
 
     return (
         <nav className="navbar col-md-14 col-lg-14 col-sm-14">
