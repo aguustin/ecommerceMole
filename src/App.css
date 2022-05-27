@@ -148,6 +148,28 @@
   margin: 10px;
 }
 
+.buttonCO{
+  margin-top: 10px;
+  width: 280px;
+}
+
+.contactForm{
+  margin-top: 10px;
+  width: 200px;
+}
+
+.contactForm input{
+  border-top:none;
+  border-right: none;
+  border-left:none;
+  outline: none;
+}
+
+.contactForm label{
+  font-weight: 600;
+  margin-top: 5px;
+}
+
 #removeItem{
   color:black;
   font-weight: 600;
@@ -158,8 +180,6 @@
   float: left;
   background-color: transparent;
 }
-
-
 
 .iconList{
   height:25px;
@@ -287,6 +307,11 @@
 
 .item-prod-footer{
   margin-bottom: -1px;
+}
+
+.spinner{
+  position: relative;
+  top:250px;
 }
 
 @keyframes App-logo-spin {

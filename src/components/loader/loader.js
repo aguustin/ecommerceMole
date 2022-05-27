@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 export const Loading = () =>{
 
     return(
-        <div>
+        <div className="spinner">
             <Spinner color="primary"/>
         </div>
     )

@@ -1,70 +1,16 @@
-import { useState, useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import CartContext from "../../Context/cartContext/cartContext";
 import { writeBatch, addDoc, collection, getDocs, query, where, documentId } from "firebase/firestore";
 import { firestoreDb } from "../../services/firebase/index";
 
-
-/* Cart : Falta formulario de contacto para que el usuario lo complete 
-y que no se creen todas las ordenes con los mismos datos. Con esto el proyecto esta incompleto., 
-es necesario para aprobar.*/
-
-
-const SignIn = () => {
-    const [user, setUser] = useState({
-        mail: '',
-        name: '',
-        pass: ''
-    });
-
-    const getIn = (event) => {
-
-        event.stopPropagation();
-        
-        setUser({...user, [event.target.name] : event.target.value})
-    
-        console.log(user)
-        
-    }
-    
-    const enviarDatos = (event) => {
-        event.preventDefault()
-        setUser({...user, [event.target.name] : event.target.value})
-    
-        console.log(user)
-    
-        if(user.mail.length < 12){
-            console.log("no se encontro usuario")
-        }else{
-            console.log("enviando" + user.mail + "y" + user.name )
-        }
-        return user
-    }
-    
-    return(
-        
-       <form onSubmit={enviarDatos}>
-         
-        <div className="formSignIn card mx-auto">
-            <div className="card-header"><h3>Sign in</h3></div>
-                <div className="card-body">
-                   
-                        <input placeholder="Email" type="email" onChange={getIn} name="mail"></input>
-                        <input placeholder="Name" type="text" onChange={getIn} name="names"></input>                         
-                        <input placeholder="Password" type="password" onChange={getIn} name="pass"></input>
-                   
-                </div>
-            <div className="card-footer"><button className="btn btn-danger" type="submit" style={{fontWeight:'600'}}>Get in</button></div>
-        </div>
-        </form>
-        
-    )
-    
-    }
-
-const Cart = (user) => {
+const Cart = () => {
   
     const {cart, removeItem, clearCart, getTotal} = useContext(CartContext);
+
+    const [ names, setName ] = useState();
+    const [ phone, setPhone ] = useState();
+    const [ address, setAddress ] = useState(); 
 
 
     const createOrder = () => {
@@ -72,8 +18,9 @@ const Cart = (user) => {
         const ObjectOrder = {
             items : cart,
             buyer : {
-                email: user.mail,
-                username: user.name
+                names: names,
+                phones: phone,
+                address: address
             },
             total : getTotal(),
             date: new Date()
@@ -102,13 +49,15 @@ const Cart = (user) => {
             const collectionRef = collection(firestoreDb, 'orders')
             return addDoc(collectionRef, ObjectOrder)
         }else{
-            return Promise.reject({ name: 'outOfStockError', products: outOfStock})
+            return Promise.reject(
+                { name: 'outOfStockError', products: outOfStock }
+            )
         }
-    }).then(({ id}) => {
+    }).then(({id}) => {
         batch.commit()
         clearCart()
         return(
-        console.log(`Orden ${id}`)
+        console.log(`Orden ${id}, Name:${names}, Phone:${phone}, Adress:${address}`)
         )
     }).catch(error => {
         console.log(error)
@@ -135,9 +84,9 @@ const Cart = (user) => {
                  <button id="removeItem" onClick={() =>removeItem(prod.id)}>X</button><br></br> 
                  <img src={prod.img} alt=""></img><br></br> 
                  Product name: {prod.name} <br></br> 
-                 cantidad: {prod.quantity} <br></br> 
-                 price uni: {prod.price} <br></br> 
-                 subtotal: {prod.quantity * prod.price}<br></br>
+                 Quantity: {prod.quantity} <br></br> 
+                 Price uni: {prod.price} <br></br> 
+                 Subtotal: {prod.quantity * prod.price}<br></br>
                  </li>
                 )
                 }
@@ -150,9 +99,15 @@ const Cart = (user) => {
                     }
                      </div>
                 <div className="mx-auto">
+                    <form className="contactForm mx-auto">
+                    <label>Name:<input className="InputContact" type="text" value={names} onChange={({target}) => setName(target.value)} /></label>
+                    <label>Phone:<input className="InputContact" type="number" value={phone} onChange={({target}) => setPhone(target.value)} /></label>
+                    <label>Adress:<input className="InputContact" type="text" value={address} onChange={({target}) => setAddress(target.value)} /></label>
+                    </form>
+                    <div className="buttonCO mx-auto" style={{display:'flex'}}>
                     <button id="clearCart" className="btn btn-danger" onClick={() => clearCart()}>Clear cart</button>
                     <button id="createOrder" className="btn btn-primary" onClick={() => createOrder()}>Create Order</button>
-                    <SignIn></SignIn>
+                    </div>
                 </div>
         </div>
     )

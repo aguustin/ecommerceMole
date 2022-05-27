@@ -30,8 +30,6 @@ const NavBar = () => {
             <div className="mx-auto">
             {categories.map(cat => <NavLink className="categories" key={cat.id} to={`/category/${cat.id}`}>{cat.description}</NavLink>)}
             </div>
-            <Link to='/signIn'><button className="B-login">Sign In</button></Link>
-            <Link to='/signUp'><button className="B-login">Sign Up</button></Link>
             <CartWidget />
         </nav>
 

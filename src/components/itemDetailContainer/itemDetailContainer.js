@@ -15,11 +15,12 @@ const ItemDetailContainer = () => {
         getDoc(doc(firestoreDb, 'products', Id)).then(response =>{
             const product = {id: response.id, ...response.data()}
             setProducts(product)
-        })
+        }).catch((error) => {
+            console.log(error)   
+         })
         return(() => {
             setProducts()
         })
-
     }, [Id])
 
     return(

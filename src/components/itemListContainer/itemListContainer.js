@@ -3,6 +3,7 @@ import ItemList from "../itemList/itemList";
 import { getDocs, collection, query, where } from "firebase/firestore";
 import { firestoreDb } from "../../services/firebase";
 import { useParams } from "react-router-dom";
+import  Loading  from "../loader/loader";
 
 
 const ItemListContainer = (props) => {
@@ -22,12 +23,14 @@ const ItemListContainer = (props) => {
                 return {id: doc.id, ...doc.data()}
             }) 
             setProducts(products);
-        })
+        }).catch((error) => {
+            console.log(error)   
+         })
     }, [categoryId])
 
         if(products.length === 0){
             return(
-                <h1>Loading...</h1>
+            <Loading></Loading>
             )
         }
             return(
