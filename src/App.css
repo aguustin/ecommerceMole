@@ -1,0 +1,364 @@
+*{
+  text-decoration: none;
+  list-style: none;
+ 
+}
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.navbar {
+  background-color: rgb(218, 240, 247);
+  border-bottom: 1px solid li;
+  height: 80px;
+}
+
+.nav-img {
+  height: 50px;
+  margin-left: 17px;
+}
+
+.categories{
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+  margin-left: 50px;
+}
+
+.nav-Buttons {
+  background: none;
+  border: none;
+  border-radius: 15px;
+  outline: none;
+  font-size: 18px;
+  font-weight: 600;
+  height: 40px;
+  width: 100px;
+}
+
+.nav-Buttons:hover {
+ background-color: rgb(231, 230, 230);
+ transition: all 0.7s;
+}
+
+.B-login {
+  border:none;
+  color: white;
+  background: none;
+  outline: none;
+  margin-right: 25px;
+  font-weight: 600;
+}
+
+.formSignIn{
+  position: relative;
+  top:100px;
+  line-height: 40px;
+  width: 350px;
+} 
+
+.formSignIn input{
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  font-size: 18px;
+  width: 300px;
+}
+
+.cart{
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  background-color: rgb(218, 240, 247);
+  height: 55px;
+  text-decoration: none;
+}
+
+.cart:hover{
+  cursor: pointer;
+}
+
+.cart, p{
+  font-weight: 600;
+  color: white;
+}
+
+.onCart{
+  display: block;
+}
+
+
+.onCart ul li{
+  font-weight: 600;;
+  width: auto;
+  height: 200px;
+  display: inline-flex;
+  margin: 10px;
+  text-align: center;
+}
+
+.onCart li:hover{
+  cursor: pointer;
+}
+
+.onCart ul{
+  display: block;
+  margin-top: 20px;
+}
+
+#clearCart, #createOrder{
+  color:white;
+  border-radius: 5px;
+  width: 130px;
+  margin-bottom: 15px;
+  font-weight: 600;
+  margin: 10px;
+}
+
+.buttonCO{
+  margin-top: 10px;
+  width: 280px;
+}
+
+.contactForm{
+  margin-top: 10px;
+  width: 200px;
+}
+
+.contactForm input{
+  border-top:none;
+  border-right: none;
+  border-left:none;
+  outline: none;
+}
+
+.contactForm label{
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+#removeItem{
+  color:black;
+  font-weight: 600;
+  width: auto;
+  height: 30px;
+  border: none;
+  outline: none;
+  float: left;
+  background-color: transparent;
+}
+
+.iconList{
+  height:25px;
+  right: 25px;
+  margin-top: 5px;
+  color: white;
+}
+
+.seeDetails button{
+  text-decoration:none;
+  color:white;
+  font-weight: 400;
+  border: none;
+  width: 100px;
+  border-radius: 3px;
+  background-color: rgb(255, 72, 72);
+}
+
+.seeDetails button:hover{
+  background-color:rgb(245, 43, 43);
+  color:black;
+  transition: all 0.2s;
+  width: 105px;
+}
+
+.itemCount{
+  background-color: rgb(218, 240, 247);
+  border-radius: 3px;
+  height: 60px;
+  min-width: 150px;
+  margin: 0px auto;
+}
+
+.itemCount button span{
+  background-color: rgb(218, 240, 247);
+}
+
+.itemCountChild{
+  background-color: white;
+  height: 20px;
+  width: 94%;
+  margin-top: 10px;
+  border-radius: 6px;
+  display: flex;
+}
+
+.itemCountChild button{
+  position: relative;
+  bottom: 7px;
+  background: none;
+  border:none;
+  outline: none;
+  font-weight: 600;
+  font-size: 19px;
+}
+
+#addCart{
+  margin: 0px auto;
+  border: none;
+}
+
+.inputCount{
+  margin: 0px auto;
+}
+
+.inputCount input{
+  border-radius: 5px;
+  width: 80px;
+  border: 1px rgb(218, 240, 247) solid;
+}
+
+.inputCount button{
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  background-color: rgb(196, 237, 250);
+}
+
+.irAlCarrito{
+  background-color: rgb(245, 43, 43);
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 5px;
+  border-radius: 7px;
+  margin: 0px auto;
+}
+
+.irAlCarrito:hover{
+  color:black;
+  transition: all 0.2s;
+}
+
+.itemCountChild p{
+  color:black; 
+  width:170px;
+}
+
+#sumCart{
+  margin-top: 10px;
+  height: 40px;
+  width: 94%;
+  border: 1px solid lightblue;
+  background-color: rgb(218, 240, 247);
+}
+
+#changeAcount{
+  border: none;
+  background-color: transparent;
+}
+
+.item-prod{
+  height: 500px;
+}
+
+.item-prod p {
+  color: black;
+  font-size: 12px;
+}
+
+.item-prod:hover{
+  box-shadow: 0px 0px 8px 2px rgba(191,231,247,0.75) inset;
+  -webkit-box-shadow: 0px 0px 8px 2px rgba(191,231,247,0.75) inset;
+  -moz-box-shadow: 0px 0px 8px 2px rgba(191,231,247,0.75) inset;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+.item-prod img{
+  width: 200px;
+  margin-top: 2rem;
+}
+
+.item-prod-footer{
+  margin-bottom: -1px;
+}
+
+.spinner{
+  position: relative;
+  top:250px;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.orderCreated{
+  background-color: rgb(159, 233, 255);
+  position: absolute;
+  top: 5.5rem;
+  right: 0.5rem;
+  border-radius: 7px;
+}
+
+.orderCreated p{
+  padding: 0px 10px;
+  font-weight: 600;
+  color: black;
+  vertical-align: center;
+}
+
+.changeGoToCart{
+  text-align: center;
+}
+
+#changeAcount{
+  margin: 0px auto;
+}
+
+.noProducts{
+  margin-top: 80px;
+}
+
+.noInformation{
+  margin-top: 10px;
+  width: 300px;
+}
+
+.noInformation p{
+  color: black;
+}
+
